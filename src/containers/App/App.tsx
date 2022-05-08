@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme } from '../../theme/themes';
 import Header from '../Header/Header';
+import Search from '../Search/Search';
 import { AppContainer, Content } from './styles';
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
       <AppContainer>
         <Content>
           <Header />
-          <div>Matheus</div>
+          <Search />
         </Content>
       </AppContainer>
     </ThemeProvider>
