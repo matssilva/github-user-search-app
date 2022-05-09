@@ -8,6 +8,7 @@ export const Container = styled.div`
   border-radius: 15px;
   display: flex;
   align-items: center;
+  margin-bottom: 24px;
 `;
 
 export const SearchIcon = styled(FiSearch)`

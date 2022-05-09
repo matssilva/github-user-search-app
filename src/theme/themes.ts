@@ -4,6 +4,7 @@ const lightTheme = {
   color3: '#fefefe',
   color4: '#0079ff',
   color5: '#4B6A9B',
+  color6: '#2B3442',
   fontFamily: 'Space Mono'
 }
 

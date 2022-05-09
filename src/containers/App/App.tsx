@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme } from '../../theme/themes';
 import Header from '../Header/Header';
 import Search from '../Search/Search';
+import UserDetails from '../UserDetails/UserDetails';
 import { AppContainer, Content } from './styles';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Content>
           <Header />
           <Search />
+          <UserDetails />
         </Content>
       </AppContainer>
     </ThemeProvider>
