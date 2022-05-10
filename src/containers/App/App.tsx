@@ -1,17 +1,20 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { lightTheme } from '../../theme/themes';
+import { useTheme } from '../../hooks/useTheme';
+import { lightTheme, darkTheme } from '../../theme/themes';
 import Header from '../Header/Header';
 import Search from '../Search/Search';
 import UserDetails from '../UserDetails/UserDetails';
 import { AppContainer, Content } from './styles';
 
 function App() {
+  const [theme, themeToggler] = useTheme();
+
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <AppContainer>
         <Content>
-          <Header />
+          <Header themeToggler={themeToggler} theme={theme} />
           <Search />
           <UserDetails />
         </Content>

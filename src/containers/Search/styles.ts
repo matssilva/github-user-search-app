@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { FiSearch } from "react-icons/fi";
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.color3};
@@ -9,14 +8,14 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 24px;
-`;
 
-export const SearchIcon = styled(FiSearch)`
-  color: ${({ theme }) => theme.color4};
-  height: 32px;
-  width: 32px;
-  margin-right: 24px;
-  margin-left: 22px;
+  & > svg {
+    color: ${({ theme }) => theme.color4};
+    height: 32px;
+    width: 32px;
+    margin-right: 24px;
+    margin-left: 22px;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -29,11 +28,12 @@ export const SearchInput = styled.input`
   font-weight: 400;
   font-size: 18px;
   line-height: 25px;
-  color: ${({ theme }) => theme.color5};
+  color: ${({ theme }) => theme.headerText};
+  background-color: ${({ theme }) => theme.color3};
 
   ::placeholder,
   ::-webkit-input-placeholder {
-    color: ${({ theme }) => theme.color5};
+    color: ${({ theme }) => theme.headerText};
   }
 
 `;

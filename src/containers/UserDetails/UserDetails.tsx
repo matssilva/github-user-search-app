@@ -1,6 +1,8 @@
 import React from 'react'
-import { FaMapMarkerAlt, FaBuilding } from 'react-icons/fa'
-import { FiLink, FiTwitter } from 'react-icons/fi'
+import { ReactComponent as BuildingIcon } from '../../assets/building.svg';
+import { ReactComponent as LocationIcon } from '../../assets/location.svg';
+import { ReactComponent as TwitterIcon } from '../../assets/twitter.svg';
+import { ReactComponent as UrlIcon } from '../../assets/url.svg';
 import {
   AdditionalInfo,
   AdditionalInfos,
@@ -46,20 +48,20 @@ const UserDetails = () => {
         </Metrics>
         <AdditionalInfos>
           <AdditionalInfo>
-            <FaMapMarkerAlt className='icon' />
-            <label className='text'>San Francisco</label>
+            <LocationIcon />
+            <label>San Francisco</label>
           </AdditionalInfo>
           <AdditionalInfo>
-            <FiTwitter className='icon icon-twitter' />
-            <label className='text'>Not Available</label>
+            <TwitterIcon />
+            <label>Not Available</label>
           </AdditionalInfo>
           <AdditionalInfo>
-            <FiLink className='icon icon-link' />
-            <label className='text'>https://github.blog</label>
+            <UrlIcon />
+            <label>https://github.blog</label>
           </AdditionalInfo>
           <AdditionalInfo>
-            <FaBuilding className='icon' />
-            <label className='text'>@github</label>
+            <BuildingIcon />
+            <label>@github</label>
           </AdditionalInfo>
         </AdditionalInfos>
       </div>

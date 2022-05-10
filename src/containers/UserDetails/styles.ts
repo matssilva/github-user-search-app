@@ -107,20 +107,12 @@ export const AdditionalInfo = styled.div`
   display: flex;
   align-items: center;
 
-  & .icon {
+  & svg {
     color: ${({ theme }) => theme.color5};
     margin-right: 19px;
   }
 
-  & .icon-twitter {
-    fill: ${({ theme }) => theme.color5};
-  }
-
-  & .icon-link {
-    stroke-width: 3px;
-  }
-
-  & .text {
+  & label {
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
