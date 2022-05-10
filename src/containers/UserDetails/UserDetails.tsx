@@ -17,11 +17,15 @@ import {
   MetricValue,
   Name,
   Nickname
-} from './styles'
+} from './styles';
 
-const UserDetails = () => {
+interface Props {
+  theme: string;
+}
+
+const UserDetails = ({ theme }: Props) => {
   return (
-    <Container>
+    <Container themeSelected={theme}>
       <div className="left-side">
         <ImageContainer></ImageContainer>
       </div>

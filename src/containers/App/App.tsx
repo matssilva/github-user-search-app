@@ -8,15 +8,14 @@ import UserDetails from '../UserDetails/UserDetails';
 import { AppContainer, Content } from './styles';
 
 function App() {
-  const [theme, themeToggler] = useTheme();
-
+  const { theme, themeToggler } = useTheme();
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <AppContainer>
         <Content>
           <Header themeToggler={themeToggler} theme={theme} />
-          <Search />
-          <UserDetails />
+          <Search theme={theme} />
+          <UserDetails theme={theme} />
         </Content>
       </AppContainer>
     </ThemeProvider>

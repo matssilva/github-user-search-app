@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ themeSelected: string }>`
   width: 100%;
-  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
+  box-shadow: ${({ themeSelected }) => themeSelected === 'dark' ? 'none' : '0px 16px 30px -10px rgba(70, 96, 187, 0.198567)'};
   border-radius: 15px;
   background-color: ${({ theme }) => theme.color3};
   padding: 48px;
