@@ -16,6 +16,14 @@ export const Container = styled.div<{ themeSelected: string }>`
     margin-right: 24px;
     margin-left: 22px;
   }
+
+  & > .error {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 22px;
+    color: #F74646;
+  }
 `;
 
 export const SearchInput = styled.input`

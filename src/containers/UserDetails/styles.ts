@@ -21,7 +21,11 @@ export const ImageContainer = styled.div`
   height: 117px;
   width: 117px;
   border-radius: 50%;
-  background-color: red;
+
+  & > img {
+    width: 100%;
+    border-radius: 50%;
+  }
 `;
 
 export const Header = styled.div`
@@ -54,13 +58,14 @@ export const Nickname = styled.label`
   color: #0079FF;
 `;
 
-export const Bio = styled.p`
+export const Bio = styled.p<{ bio: string | undefined }>`
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
   line-height: 25px;
   color: ${({ theme }) => theme.color5};
   margin-top: 20px;
+  opacity: ${({ bio }) => !bio ? '0.5' : 'unset'};
 `;
 
 export const Metrics = styled.div`
@@ -103,9 +108,10 @@ export const AdditionalInfos = styled.div`
   row-gap: 19px;
 `
 
-export const AdditionalInfo = styled.div`
+export const AdditionalInfo = styled.div<{ value: any }>`
   display: flex;
   align-items: center;
+  opacity: ${({ value }) => !value ? '0.5' : 'unset'};
 
   & svg {
     color: ${({ theme }) => theme.color5};
@@ -117,6 +123,11 @@ export const AdditionalInfo = styled.div`
     font-weight: 400;
     font-size: 15px;
     line-height: 22px;
-    color: ${({ theme }) => theme.color5};;
+    color: ${({ theme }) => theme.color5};
+  }
+
+  & .link:hover {
+    cursor: ${({ value }) => value ? 'pointer' : 'normal'};
+    text-decoration: ${({ value }) => value ? 'underline' : 'none'};
   }
 `;

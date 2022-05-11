@@ -3,6 +3,7 @@ import { ReactComponent as BuildingIcon } from '../../assets/building.svg';
 import { ReactComponent as LocationIcon } from '../../assets/location.svg';
 import { ReactComponent as TwitterIcon } from '../../assets/twitter.svg';
 import { ReactComponent as UrlIcon } from '../../assets/url.svg';
+import { IUser } from '../../types/IUser';
 import {
   AdditionalInfo,
   AdditionalInfos,
@@ -21,51 +22,75 @@ import {
 
 interface Props {
   theme: string;
+  user: IUser | null;
 }
 
-const UserDetails = ({ theme }: Props) => {
+const months: Array<string> = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+]
+
+const UserDetails = ({ theme, user }: Props) => {
+
+  const formatDate = () => {
+    const date = user?.created_at ? new Date(user?.created_at) : new Date();
+    return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
+  }
+
   return (
     <Container themeSelected={theme}>
       <div className="left-side">
-        <ImageContainer></ImageContainer>
+        <ImageContainer>
+          <img src={user?.avatar_url} alt='avatar url' />
+        </ImageContainer>
       </div>
       <div className="right-side">
         <Header>
-          <Name>The Octocat</Name>
-          <JoinDate>Joined 25 Jan 2011</JoinDate>
+          <Name>{user?.name || user?.login}</Name>
+          <JoinDate>Joined {formatDate()}</JoinDate>
         </Header>
-        <Nickname>@octocat</Nickname>
-        <Bio>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.</Bio>
+        <Nickname>@{user?.login}</Nickname>
+        <Bio bio={user?.bio}>{user?.bio || 'This profile has no bio'}</Bio>
         <Metrics>
           <Metric>
             <MetricLabel>Repos</MetricLabel>
-            <MetricValue>8</MetricValue>
+            <MetricValue>{user?.public_repos}</MetricValue>
           </Metric>
           <Metric>
             <MetricLabel>Followers</MetricLabel>
-            <MetricValue>3938</MetricValue>
+            <MetricValue>{user?.followers}</MetricValue>
           </Metric>
           <Metric>
             <MetricLabel>Following</MetricLabel>
-            <MetricValue>9</MetricValue>
+            <MetricValue>{user?.following}</MetricValue>
           </Metric>
         </Metrics>
         <AdditionalInfos>
-          <AdditionalInfo>
+          <AdditionalInfo value={user?.location}>
             <LocationIcon />
-            <label>San Francisco</label>
+            <label>{user?.location || 'Not Available'}</label>
           </AdditionalInfo>
-          <AdditionalInfo>
+          <AdditionalInfo value={user?.twitter_username}>
             <TwitterIcon />
-            <label>Not Available</label>
+            <label className='link'>{user?.twitter_username || 'Not Available'}</label>
           </AdditionalInfo>
-          <AdditionalInfo>
+          <AdditionalInfo value={user?.blog}>
             <UrlIcon />
-            <label>https://github.blog</label>
+            <label className='link'>{user?.blog || 'Not Available'}</label>
           </AdditionalInfo>
-          <AdditionalInfo>
+          <AdditionalInfo value={user?.company}>
             <BuildingIcon />
-            <label>@github</label>
+            <label className='link'>{user?.company || 'Not Available'}</label>
           </AdditionalInfo>
         </AdditionalInfos>
       </div>
