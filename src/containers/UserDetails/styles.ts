@@ -118,7 +118,7 @@ export const AdditionalInfo = styled.div<{ value: any }>`
     margin-right: 19px;
   }
 
-  & label {
+  & a {
     font-style: normal;
     font-weight: 400;
     font-size: 15px;

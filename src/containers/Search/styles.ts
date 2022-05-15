@@ -23,6 +23,8 @@ export const Container = styled.div<{ themeSelected: string }>`
     font-size: 15px;
     line-height: 22px;
     color: #F74646;
+    margin-right: 24px;
+    white-space: nowrap;
   }
 `;
 

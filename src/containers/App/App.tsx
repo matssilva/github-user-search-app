@@ -12,6 +12,7 @@ function App() {
   const [user, setUser] = useState<IUser | null>(null);
 
   const { theme, themeToggler } = useTheme();
+  
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <AppContainer>

@@ -47,6 +47,13 @@ const UserDetails = ({ theme, user }: Props) => {
     return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
   }
 
+  const openInNewTab = (url: string) => {
+    if (url) {
+      const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+      if (newWindow) newWindow.opener = null
+    }
+  }
+
   return (
     <Container themeSelected={theme}>
       <div className="left-side">
@@ -78,19 +85,19 @@ const UserDetails = ({ theme, user }: Props) => {
         <AdditionalInfos>
           <AdditionalInfo value={user?.location}>
             <LocationIcon />
-            <label>{user?.location || 'Not Available'}</label>
+            <a>{user?.location || 'Not Available'}</a>
           </AdditionalInfo>
           <AdditionalInfo value={user?.twitter_username}>
             <TwitterIcon />
-            <label className='link'>{user?.twitter_username || 'Not Available'}</label>
+            <a className='link' onClick={() => openInNewTab(user?.twitter_username ? `https://twitter.com/${user?.twitter_username}` : null)}>{user?.twitter_username || 'Not Available'}</a>
           </AdditionalInfo>
           <AdditionalInfo value={user?.blog}>
             <UrlIcon />
-            <label className='link'>{user?.blog || 'Not Available'}</label>
+            <a className='link' onClick={() => openInNewTab(user?.blog ? `https://${user?.blog}` : null)}>{user?.blog || 'Not Available'}</a>
           </AdditionalInfo>
           <AdditionalInfo value={user?.company}>
             <BuildingIcon />
-            <label className='link'>{user?.company || 'Not Available'}</label>
+            <a className='link' onClick={() => openInNewTab(user?.company ? `https://github.com/${user?.company.replace('@', '')}` : null)}>{user?.company || 'Not Available'}</a>
           </AdditionalInfo>
         </AdditionalInfos>
       </div>

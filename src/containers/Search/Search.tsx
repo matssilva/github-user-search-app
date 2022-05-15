@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { Container, SearchButton, SearchInput } from './styles'
-import { ReactComponent as SearchIcon } from '../../assets/search.svg';
-import { IUser } from '../../types/IUser';
+import React, { useEffect, useState } from "react";
+import { Container, SearchButton, SearchInput } from "./styles";
+import { ReactComponent as SearchIcon } from "../../assets/search.svg";
+import { IUser } from "../../types/IUser";
 
 interface Props {
   theme: string;
@@ -9,23 +9,41 @@ interface Props {
 }
 
 const Search = ({ theme, setUser }: Props): JSX.Element => {
-  const [term, setTerm] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const [term, setTerm] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTerm(e.target.value)
-    setError('');
-  }
+    setTerm(e.target.value);
+    setError("");
+  };
+
+  const fetchUser = async (term: string): Promise<IUser> => {
+    const response: Response = await fetch(
+      `https://api.github.com/users/${term}`
+    );
+    if (response.status === 404) {
+      setError("No results");
+      return;
+    }
+    const data: IUser = await response.json();
+    return data;
+  };
+
+  useEffect(() => {
+    (async () => {
+      const user: IUser = await fetchUser("octocat");
+      setUser(user);
+    })();
+  }, [setUser]);
 
   const onButtonClick = async () => {
     if (!term) {
-      setError('Preencha por gentileza o campo de texto');
+      setError("No results");
       return;
     }
-    const response: Response = await fetch(`https://api.github.com/users/${term}`);
-    const data: IUser = await response.json();
-    setUser(data);
-  }
+    const user: IUser = await fetchUser(term);
+    if (user) setUser(user);
+  };
 
   return (
     <Container themeSelected={theme}>
@@ -33,13 +51,13 @@ const Search = ({ theme, setUser }: Props): JSX.Element => {
       <SearchInput
         type="text"
         value={term}
-        placeholder='Search GitHub username…'
+        placeholder="Search GitHub username…"
         onChange={onChangeInput}
       />
-      {error && <label className='error'>{error}</label>}
+      {error && <label className="error">{error}</label>}
       <SearchButton onClick={onButtonClick}>Search</SearchButton>
     </Container>
-  )
-}
+  );
+};
 
-export default Search
+export default Search;
