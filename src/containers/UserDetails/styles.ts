@@ -7,7 +7,7 @@ export const Container = styled.div<{ themeSelected: string }>`
   background-color: ${({ theme }) => theme.color3};
   padding: 48px;
   display: flex;
-
+  flex-direction: column;
   & div.left-side {
     margin-right: 34px;
   }
@@ -21,6 +21,7 @@ export const ImageContainer = styled.div`
   height: 117px;
   width: 117px;
   border-radius: 50%;
+  margin-right: 37px;
 
   & > img {
     width: 100%;
@@ -30,8 +31,9 @@ export const ImageContainer = styled.div`
 
 export const Header = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  width: 100%;
 `;
 
 export const Name = styled.label`
@@ -64,7 +66,6 @@ export const Bio = styled.p<{ bio: string | undefined }>`
   font-size: 15px;
   line-height: 25px;
   color: ${({ theme }) => theme.color5};
-  margin-top: 20px;
   opacity: ${({ bio }) => !bio ? '0.5' : 'unset'};
 `;
 
@@ -74,8 +75,8 @@ export const Metrics = styled.div`
   padding: 15px 83px 17px 32px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-top: 32px;
+  gap: 99px;
 `;
 
 export const Metric = styled.div`

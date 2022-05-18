@@ -1,9 +1,9 @@
-import React from 'react'
-import { ReactComponent as BuildingIcon } from '../../assets/building.svg';
-import { ReactComponent as LocationIcon } from '../../assets/location.svg';
-import { ReactComponent as TwitterIcon } from '../../assets/twitter.svg';
-import { ReactComponent as UrlIcon } from '../../assets/url.svg';
-import { IUser } from '../../types/IUser';
+import React from "react";
+import { ReactComponent as BuildingIcon } from "../../assets/building.svg";
+import { ReactComponent as LocationIcon } from "../../assets/location.svg";
+import { ReactComponent as TwitterIcon } from "../../assets/twitter.svg";
+import { ReactComponent as UrlIcon } from "../../assets/url.svg";
+import { IUser } from "../../types/IUser";
 import {
   AdditionalInfo,
   AdditionalInfos,
@@ -17,8 +17,8 @@ import {
   Metrics,
   MetricValue,
   Name,
-  Nickname
-} from './styles';
+  Nickname,
+} from "./styles";
 
 interface Props {
   theme: string;
@@ -26,48 +26,49 @@ interface Props {
 }
 
 const months: Array<string> = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec'
-]
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 
 const UserDetails = ({ theme, user }: Props) => {
-
   const formatDate = () => {
     const date = user?.created_at ? new Date(user?.created_at) : new Date();
-    return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
-  }
+    return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+  };
 
   const openInNewTab = (url: string) => {
     if (url) {
-      const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
-      if (newWindow) newWindow.opener = null
+      const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+      if (newWindow) newWindow.opener = null;
     }
-  }
+  };
 
   return (
     <Container themeSelected={theme}>
-      <div className="left-side">
+      <div style={{ display: "flex", width: '100%' }}>
         <ImageContainer>
-          <img src={user?.avatar_url} alt='avatar url' />
+          <img src={user?.avatar_url} alt="avatar url" />
         </ImageContainer>
-      </div>
-      <div className="right-side">
         <Header>
-          <Name>{user?.name || user?.login}</Name>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Name>{user?.name || user?.login}</Name>
+            <Nickname>@{user?.login}</Nickname>
+          </div>
           <JoinDate>Joined {formatDate()}</JoinDate>
         </Header>
-        <Nickname>@{user?.login}</Nickname>
-        <Bio bio={user?.bio}>{user?.bio || 'This profile has no bio'}</Bio>
+      </div>
+      <div>
+      <Bio bio={user?.bio}>{user?.bio || 'This profile has no bio'}</Bio>
         <Metrics>
           <Metric>
             <MetricLabel>Repos</MetricLabel>
@@ -101,8 +102,22 @@ const UserDetails = ({ theme, user }: Props) => {
           </AdditionalInfo>
         </AdditionalInfos>
       </div>
+      
+      {/* <div className="left-side">
+        <ImageContainer>
+          <img src={user?.avatar_url} alt='avatar url' />
+        </ImageContainer>
+      </div>
+      <div className="right-side">
+        <Header>
+          <Name>{user?.name || user?.login}</Name>
+          <JoinDate>Joined {formatDate()}</JoinDate>
+        </Header>
+        <Nickname>@{user?.login}</Nickname>
+        
+      </div> */}
     </Container>
-  )
-}
+  );
+};
 
-export default UserDetails
+export default UserDetails;
