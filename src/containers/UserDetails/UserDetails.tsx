@@ -55,19 +55,19 @@ const UserDetails = ({ theme, user }: Props) => {
 
   return (
     <Container themeSelected={theme}>
-      <div style={{ display: "flex", width: '100%' }}>
+      <div className="top">
         <ImageContainer>
           <img src={user?.avatar_url} alt="avatar url" />
         </ImageContainer>
         <Header>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div>
             <Name>{user?.name || user?.login}</Name>
             <Nickname>@{user?.login}</Nickname>
           </div>
           <JoinDate>Joined {formatDate()}</JoinDate>
         </Header>
       </div>
-      <div>
+      <div className="bottom">
       <Bio bio={user?.bio}>{user?.bio || 'This profile has no bio'}</Bio>
         <Metrics>
           <Metric>
@@ -86,36 +86,22 @@ const UserDetails = ({ theme, user }: Props) => {
         <AdditionalInfos>
           <AdditionalInfo value={user?.location}>
             <LocationIcon />
-            <a>{user?.location || 'Not Available'}</a>
+            <label>{user?.location || 'Not Available'}</label>
           </AdditionalInfo>
           <AdditionalInfo value={user?.twitter_username}>
             <TwitterIcon />
-            <a className='link' onClick={() => openInNewTab(user?.twitter_username ? `https://twitter.com/${user?.twitter_username}` : null)}>{user?.twitter_username || 'Not Available'}</a>
+            <label className='link' onClick={() => openInNewTab(user?.twitter_username ? `https://twitter.com/${user?.twitter_username}` : null)}>{user?.twitter_username || 'Not Available'}</label>
           </AdditionalInfo>
           <AdditionalInfo value={user?.blog}>
             <UrlIcon />
-            <a className='link' onClick={() => openInNewTab(user?.blog ? `https://${user?.blog}` : null)}>{user?.blog || 'Not Available'}</a>
+            <label className='link' onClick={() => openInNewTab(user?.blog ? `https://${user?.blog}` : null)}>{user?.blog || 'Not Available'}</label>
           </AdditionalInfo>
           <AdditionalInfo value={user?.company}>
             <BuildingIcon />
-            <a className='link' onClick={() => openInNewTab(user?.company ? `https://github.com/${user?.company.replace('@', '')}` : null)}>{user?.company || 'Not Available'}</a>
+            <label className='link' onClick={() => openInNewTab(user?.company ? `https://github.com/${user?.company.replace('@', '')}` : null)}>{user?.company || 'Not Available'}</label>
           </AdditionalInfo>
         </AdditionalInfos>
       </div>
-      
-      {/* <div className="left-side">
-        <ImageContainer>
-          <img src={user?.avatar_url} alt='avatar url' />
-        </ImageContainer>
-      </div>
-      <div className="right-side">
-        <Header>
-          <Name>{user?.name || user?.login}</Name>
-          <JoinDate>Joined {formatDate()}</JoinDate>
-        </Header>
-        <Nickname>@{user?.login}</Nickname>
-        
-      </div> */}
     </Container>
   );
 };

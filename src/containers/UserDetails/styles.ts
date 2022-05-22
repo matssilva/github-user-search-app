@@ -8,12 +8,23 @@ export const Container = styled.div<{ themeSelected: string }>`
   padding: 48px;
   display: flex;
   flex-direction: column;
-  & div.left-side {
-    margin-right: 34px;
+  .top {
+    display: flex;
+    width: 100%;
   }
 
-  & div.right-side {
-    width: 100%;
+  .bottom {
+    width: 80%;
+    margin-left: auto;
+
+    @media(max-width: 730px) {
+      width: 100%;
+      margin-left: unset;
+    }
+  }
+
+  @media(max-width: 550px) {
+    padding: 32px 24px 48px 24px;
   }
 `;
 
@@ -34,6 +45,16 @@ export const Header = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media(max-width: 730px) {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 `;
 
 export const Name = styled.label`
@@ -77,6 +98,13 @@ export const Metrics = styled.div`
   align-items: center;
   margin-top: 32px;
   gap: 99px;
+
+  @media(max-width: 550px) {
+    justify-content: space-between;
+    padding-right: 17px;
+    gap: 0px;
+  }
+
 `;
 
 export const Metric = styled.div`
@@ -107,6 +135,11 @@ export const AdditionalInfos = styled.div`
   grid-template-columns: 1fr 1fr;
   margin-top: 37px;
   row-gap: 19px;
+
+  @media(max-width: 550px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export const AdditionalInfo = styled.div<{ value: any }>`
@@ -119,7 +152,7 @@ export const AdditionalInfo = styled.div<{ value: any }>`
     margin-right: 19px;
   }
 
-  & a {
+  & label {
     font-style: normal;
     font-weight: 400;
     font-size: 15px;

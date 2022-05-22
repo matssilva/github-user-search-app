@@ -9,5 +9,5 @@ export const AppContainer = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 730px;
+  width: min(100% - 2rem, 730px)
 `
