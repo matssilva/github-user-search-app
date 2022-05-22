@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/github-user-search-app/static/css/main.42d84773.css",
+    "main.js": "/github-user-search-app/static/js/main.cbc59a5c.js",
+    "static/media/building.svg": "/github-user-search-app/static/media/building.f8683bbe7c7a1e2447d6ae1902cb23d3.svg",
+    "static/media/sun.svg": "/github-user-search-app/static/media/sun.e9071463b628e1d10b672ee3e824454d.svg",
+    "static/media/url.svg": "/github-user-search-app/static/media/url.8f4ec834684d4b70321a4f45ebd6a385.svg",
+    "static/media/twitter.svg": "/github-user-search-app/static/media/twitter.115dcae39372d665ca0ee9892cf0c9d3.svg",
+    "static/media/search.svg": "/github-user-search-app/static/media/search.d83d92173280617c8d8e934231170196.svg",
+    "static/media/moon.svg": "/github-user-search-app/static/media/moon.b0b29e1e58faf554ab7a177f440eee3a.svg",
+    "static/media/location.svg": "/github-user-search-app/static/media/location.3aed14b37414e170f3d30a148fc01adf.svg",
+    "index.html": "/github-user-search-app/index.html",
+    "main.42d84773.css.map": "/github-user-search-app/static/css/main.42d84773.css.map",
+    "main.cbc59a5c.js.map": "/github-user-search-app/static/js/main.cbc59a5c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.42d84773.css",
+    "static/js/main.cbc59a5c.js"
+  ]
+}
